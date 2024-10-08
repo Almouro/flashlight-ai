@@ -1,0 +1,15 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Flashlight AI",
+      "program": "${workspaceFolder}/auditor/dist/index.js", // Change to your compiled JS entry point
+      "args": ["run"],
+      "outFiles": [
+        "${workspaceFolder}/auditor/dist/**/*.js" // Specify where the compiled JS files are located
+      ]
+    }
+  ]
+}
