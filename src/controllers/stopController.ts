@@ -13,7 +13,7 @@ export const stopController: Controller<
 > = {
   inputSchema,
   outputSchema: z.object({}),
-  controller: async ({ reason }: z.infer<typeof inputSchema>) => {
+  controller: async ({ reason }: StopType) => {
     console.log(kleur.green(`✅ Finishing the session... ${reason}`));
     return {};
   },
@@ -23,3 +23,5 @@ export const stopController: Controller<
     summary: "Stop the session",
   },
 };
+
+export type StopType = z.infer<typeof inputSchema>;

@@ -1,14 +1,15 @@
 import { z } from "zod";
-import { androidDriver } from "../AndroidDriver";
 import { Controller } from "./controller";
+import { AndroidDriver } from "../platforms/AndroidDriver";
 
 const inputSchema = z.object({});
 const outputSchema = z.object({
   hierarchyDump: z.string(),
 });
 
+// TODO: get rid of this
 const controller = async () => {
-  return androidDriver.snapshot();
+  return new AndroidDriver().snapshot();
 };
 
 export const snapshotController: Controller<
