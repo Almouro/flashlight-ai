@@ -1,0 +1,19 @@
+import { ActionType } from "../../controllers/actionController";
+import { StopType } from "../../controllers/stopController";
+import { Explorer } from "../../interfaces";
+import { mockExplorerActions } from "./mockExplorerActions";
+
+export class MockExplorer implements Explorer {
+  constructor(private stepCount?: number) {}
+  private actions = mockExplorerActions.slice(0, this.stepCount);
+
+  getNextAction(_hierarchyDump: string): Promise<ActionType | StopType> {
+    const nextAction = this.actions.shift();
+
+    if (!nextAction) {
+      throw new Error("No more actions to perform");
+    }
+
+    return Promise.resolve(nextAction);
+  }
+}
